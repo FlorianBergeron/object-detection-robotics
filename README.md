@@ -2,7 +2,7 @@
 
 ## Setup and training
 
-To train the models, we used this TensorFlow tutorial: https://tensorflow-object-detection-api-tutorial.readthedocs.io/en/latest/install.html
+To train the models, we used this TensorFlow tutorial: https://tensorflow-object-detection-api-tutorial.readthedocs.io
 So it's required to follow the 'Install' part and the first section of 'Training Custom Object Detector'.
 
 At the end you should have the same environment and folder tree as in the tutorial.
@@ -20,3 +20,12 @@ During the training, we could monitor it with Tensorboard using:
 
 Finally to export the model and use it in the ROS env, we launched in the training folder:
 `python .\exporter_main_v2.py --input_type image_tensor --pipeline_config_path .\models\ssd_mobilenet_v2_fpnlite_640x640\pipeline.config --trained_checkpoint_dir .\models\ssd_mobilenet_v2_fpnlite_640x640\ --output_directory .\exported-models\my_model`
+
+## Pre-processing
+
+The dataset was generated using some of the COCO dataset, some of the Open Image Dataset v4 and some custom images annotated with labelImg. Some of it was formated using the script in the preprocessing folder but it's too specific so it's not in the setup steps.
+
+## Best model
+
+The most efficient model trained can be found directly at robotics/src/mr_vision/src/mr_vision/ssd_mobilenet_v2_fpnlite_640/saved_model/saved_model.pb
+It's based on the MobileNet v2 architecture using transfer-learning during about 100 epochs.
